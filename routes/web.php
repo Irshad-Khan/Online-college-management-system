@@ -11,9 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return redirect('/login');
-});
+
+Route::get('/', 'LandingController@index');
 
 Auth::routes();
 
@@ -46,6 +45,9 @@ Route::group(['middleware' => ['auth','role:Admin']], function ()
     Route::resource('teacher', 'TeacherController');
     Route::resource('parents', 'ParentsController');
     Route::resource('student', 'StudentController');
+    Route::resource('programs', 'ProgramsController');
+    Route::resource('admissions', 'OpenAdmissionController');
+
     Route::get('attendance', 'AttendanceController@index')->name('attendance.index');
 
 });
