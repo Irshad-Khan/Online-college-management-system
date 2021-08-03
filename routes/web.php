@@ -64,5 +64,7 @@ Route::group(['middleware' => ['auth','role:Parent']], function ()
 });
 
 Route::group(['middleware' => ['auth','role:Student']], function () {
-
+    Route::get('qualifications', 'QualificationController@create')->name('qualification.create');
+    Route::delete('qualifications/delete/{id}', 'QualificationController@destroy')->name('qualification.delete');
+    Route::post('qualifications', 'QualificationController@store')->name('qualification.store');
 });

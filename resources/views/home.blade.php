@@ -32,5 +32,23 @@
     @endrole
 
 </div>
-
+@include('backend.modals.delete',['name' => 'Qualification'])
 @endsection
+
+@push('scripts')
+<script>
+    $(function() {
+        $( ".deletestudent" ).on( "click", function(event) {
+            event.preventDefault();
+            $( "#deletemodal" ).toggleClass( "hidden" );
+            var url = $(this).attr('data-url');
+            $(".remove-record").attr("action", url);
+        })        
+        
+        $( "#deletemodelclose" ).on( "click", function(event) {
+            event.preventDefault();
+            $( "#deletemodal" ).toggleClass( "hidden" );
+        })
+    })
+</script>
+@endpush

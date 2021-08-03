@@ -70,6 +70,7 @@ class HomeController extends Controller
      */
     public function profile() 
     {
+        
         return view('profile.index');
     }
 
@@ -82,7 +83,12 @@ class HomeController extends Controller
     {
         $request->validate([
             'name'  => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users,email,'.auth()->id()
+            'email' => 'required|string|email|max:255|unique:users,email,'.auth()->id(),
+            'phone' => 'required|string|max:255',
+            'gender' => 'required',
+            'dateofbirth' => 'required|date',
+            'current_address' => 'required:string',
+            'permanent_address' => 'required:string',
         ]);
 
         if ($request->hasFile('profile_picture')) {
@@ -99,7 +105,7 @@ class HomeController extends Controller
             'email'             => $request->email,
             'profile_picture'   => $profile
         ]);
-
+        $user->student->update($request->all());
         return redirect()->route('profile');
     }
 

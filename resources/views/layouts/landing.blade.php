@@ -65,10 +65,10 @@
                             <a href="#contact" class="nav-link">Contact</a>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link btn btn-custom">Login</a>
+                            <a href="{{ route('login') }}" class="nav-link btn btn-custom">Login</a>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link btn btn-custom">Signup</a>
+                            <a href="{{ route('register') }}" class="nav-link btn btn-custom">Student registration</a>
                         </li>
                     </ul>
                 </div>

@@ -11,10 +11,17 @@
                     <svg class="w-3 h-3 fill-current" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="plus" class="svg-inline--fa fa-plus fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path></svg>
                     <span class="ml-2 text-xs font-semibold">Edit Profile</span>
                 </a>
+                @role('Student')
+                <a href="{{ route('qualification.create') }}" class="bg-gray-200 text-gray-700 text-sm uppercase ml-2 py-2 px-4 flex items-center rounded">
+                    <svg class="w-3 h-3 fill-current" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="plus" class="svg-inline--fa fa-plus fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path></svg>
+                    <span class="ml-2 text-xs font-semibold">Add Heighest Qualification Detail</span>
+                </a>
+                @endrole
                 <a href="{{ route('profile.change.password') }}" class="bg-gray-200 text-gray-700 text-sm uppercase ml-2 py-2 px-4 flex items-center rounded">
                     <svg class="w-3 h-3 fill-current" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="plus" class="svg-inline--fa fa-plus fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"></path></svg>
                     <span class="ml-2 text-xs font-semibold">Change Password</span>
                 </a>
+               
             </div>
         </div>
         <div class="mt-8 bg-white rounded">
@@ -40,6 +47,58 @@
                             <span class="text-gray-600 font-bold">{{ auth()->user()->email }}</span>
                         </div>
                     </div>
+                    @role('Student')
+                    <div class="md:flex md:items-center mb-4">
+                        <div class="md:w-1/3">
+                            <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
+                                Phone :
+                            </label>
+                        </div>
+                        <div class="md:w-2/3">
+                            <span class="text-gray-600 font-bold">{{ optional(auth()->user()->student)->phone }}</span>
+                        </div>
+                    </div>
+                    <div class="md:flex md:items-center mb-4">
+                        <div class="md:w-1/3">
+                            <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
+                                Gender :
+                            </label>
+                        </div>
+                        <div class="md:w-2/3">
+                            <span class="text-gray-600 font-bold">{{ optional(auth()->user()->student)->gender }}</span>
+                        </div>
+                    </div>
+                    <div class="md:flex md:items-center mb-4">
+                        <div class="md:w-1/3">
+                            <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
+                                DOB :
+                            </label>
+                        </div>
+                        <div class="md:w-2/3">
+                            <span class="text-gray-600 font-bold">{{ Carbon\Carbon::parse(optional(auth()->user()->student)->dateofbirth)->format('D M Y') }}</span>
+                        </div>
+                    </div>
+                    <div class="md:flex md:items-center mb-4">
+                        <div class="md:w-1/3">
+                            <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
+                                Current Address :
+                            </label>
+                        </div>
+                        <div class="md:w-2/3">
+                            <span class="text-gray-600 font-bold">{{ optional(auth()->user()->student)->current_address }}</span>
+                        </div>
+                    </div>
+                    <div class="md:flex md:items-center mb-4">
+                        <div class="md:w-1/3">
+                            <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
+                                Permanent Address :
+                            </label>
+                        </div>
+                        <div class="md:w-2/3">
+                            <span class="text-gray-600 font-bold">{{ optional(auth()->user()->student)->permanent_address }}</span>
+                        </div>
+                    </div>
+                    @endrole
                     <div class="md:flex md:items-center mb-4">
                         <div class="md:w-1/3">
                             <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">

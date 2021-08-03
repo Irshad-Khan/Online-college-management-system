@@ -37,4 +37,14 @@ class Student extends Model
     {
         return $this->hasMany(Attendance::class);
     }
+    
+    /**
+     * Get the qualification associated with the Student
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function qualification()
+    {
+        return $this->hasOne(Qualification::class, 'student_id', 'user_id');
+    }
 }

@@ -36,6 +36,9 @@
                 Sign In
             </button>
         </div>
+        <div class="flex items-center justify-between mt-5">
+            <a href="{{ route('register') }}">Are you new Student Click here</a>
+        </div>
     </form>
 </div>
 
