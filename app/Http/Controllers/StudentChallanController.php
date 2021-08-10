@@ -12,9 +12,13 @@ class StudentChallanController extends Controller
     public function studentChallan()
     {
         $challanForm = ChallanForm::where('student_id',Auth::id())->first();
-
-        $fee= (($challanForm->fee + $challanForm->processing_fee +$challanForm->bus_rent + $challanForm->security_fee + $challanForm->library_fee) - $challanForm->one_time_scholarship);
-        $feeInWords = $this->numberToWords($fee);
+        $fee = null;
+        $feeInWords = null;
+        if($challanForm)
+        {
+            $fee= (($challanForm->fee + $challanForm->processing_fee +$challanForm->bus_rent + $challanForm->security_fee + $challanForm->library_fee) - $challanForm->one_time_scholarship);
+            $feeInWords = $this->numberToWords($fee);
+        }
         return view('backend.student_challan.view_challan_form', compact('challanForm','fee','feeInWords'));
     }
 

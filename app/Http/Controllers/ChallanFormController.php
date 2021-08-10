@@ -47,5 +47,20 @@ class ChallanFormController extends Controller
     }
 
 
+    public function addFee(Request $request)
+    {
+        $challan = ChallanForm::findOrFail($request->challanid);
+        $challan->is_challan_paid = 1;
+        $challan->update();
 
+        $student = $challan->user->student;
+        $student->is_admitted = 2;
+        $student->roll_number = rand(1,50);
+        $student->update();
+
+        return response()->json([
+            'status' => true,
+            'message' => 'Fee added successfully'
+        ]);
+    }
 }

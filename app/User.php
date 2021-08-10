@@ -53,4 +53,14 @@ class User extends Authenticatable
     {
         return $this->hasOne(Parents::class);
     }
+
+    /**
+     * Get the challan that owns the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function challan()
+    {
+        return $this->belongsTo(ChallanForm::class, 'id', 'student_id');
+    }
 }

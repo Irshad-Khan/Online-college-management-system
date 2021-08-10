@@ -1,8 +1,8 @@
 <div class="mt-8 bg-white rounded">
     @include('alerts.success')
         <div class="w-full max-w-2xl px-6 py-12">
-
-            @if($student->is_admitted == 1)
+            
+            @if($student->is_admitted == 2)
             <div class="md:flex md:items-center mb-6">
                 <div class="md:w-1/3">
                     <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
@@ -14,7 +14,7 @@
                 </div>
             </div>
             @endif
-            @if($student->is_admitted == 1)
+            @if($student->is_admitted == 2)
             <div class="md:flex md:items-center mb-6">
                 <div class="md:w-1/3">
                     <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
@@ -22,7 +22,7 @@
                     </label>
                 </div>
                 <div class="md:w-2/3 block text-gray-600 font-bold">
-                    <span class="text-gray-600 font-bold">{{ optional($student->class)->class_name ?: 'Not assigned Yet' }}</span>
+                    <span class="text-gray-600 font-bold">{{ optional($student->program)->title ?: 'Not assigned Yet' }}</span>
                 </div>
             </div>
             @endif

@@ -1,3 +1,4 @@
+
 <div class="sidebar hidden sm:block w-0 sm:w-1/6 bg-gray-200 h-screen shadow fixed top-0 left-0 bottom-0 z-40 overflow-y-auto">
     <div class="mb-6 mt-20 px-6">
         <a href="{{ route('home') }}" class="flex items-center text-gray-600 py-2 hover:text-blue-700">
@@ -22,11 +23,14 @@
             <img src="{{ asset('images/meritlist.png') }}" style="width: 20px; height: 20px" alt="">
             <span class="ml-2 text-sm font-semibold">View Marit List</span>
         </a>
+{{-- @dd(optional(optional(auth()->user())->challan)) --}}
+        @if(optional(optional(auth()->user())->challan)->description !== null)
         <a href="{{ route('view.student.challan') }}" class="flex items-center text-gray-600 py-2 hover:text-blue-700 {{ (Route::currentRouteName() === 'view.challan') ? 'active' : '' }}">
             {{-- <svg class="h-4 w-4 fill-current" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="grip-horizontal" class="svg-inline--fa fa-grip-horizontal fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M96 288H32c-17.67 0-32 14.33-32 32v64c0 17.67 14.33 32 32 32h64c17.67 0 32-14.33 32-32v-64c0-17.67-14.33-32-32-32zm160 0h-64c-17.67 0-32 14.33-32 32v64c0 17.67 14.33 32 32 32h64c17.67 0 32-14.33 32-32v-64c0-17.67-14.33-32-32-32zm160 0h-64c-17.67 0-32 14.33-32 32v64c0 17.67 14.33 32 32 32h64c17.67 0 32-14.33 32-32v-64c0-17.67-14.33-32-32-32zM96 96H32c-17.67 0-32 14.33-32 32v64c0 17.67 14.33 32 32 32h64c17.67 0 32-14.33 32-32v-64c0-17.67-14.33-32-32-32zm160 0h-64c-17.67 0-32 14.33-32 32v64c0 17.67 14.33 32 32 32h64c17.67 0 32-14.33 32-32v-64c0-17.67-14.33-32-32-32zm160 0h-64c-17.67 0-32 14.33-32 32v64c0 17.67 14.33 32 32 32h64c17.67 0 32-14.33 32-32v-64c0-17.67-14.33-32-32-32z"></path></svg> --}}
             <img src="{{ asset('images/meritlist.png') }}" style="width: 20px; height: 20px" alt="">
             <span class="ml-2 text-sm font-semibold">View Challan Form</span>
         </a>
+        @endif
         @endrole
         @role('Admin')
         <a href="{{ route('classes.index') }}" class="flex items-center text-gray-600 py-2 hover:text-blue-700 {{ (Route::currentRouteName() === 'classes.index') ? 'active' : '' }}">

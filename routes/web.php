@@ -58,7 +58,7 @@ Route::group(['middleware' => ['auth','role:Admin']], function ()
     Route::post('store/challan/form', 'ChallanFormController@storeChallanForm')->name('store.challan.form');
     Route::get('edit/challanforms/generator/{id}', 'ChallanFormController@edit')->name('edit.challan.forms.generator');
     Route::delete('delete/challanforms/generator/{id}', 'ChallanFormController@delete')->name('delete.challan.forms.generator');
-
+    Route::get('/add/fee', 'ChallanFormController@addFee')->name('add.fee');
 });
 
 Route::group(['middleware' => ['auth','role:Teacher']], function ()

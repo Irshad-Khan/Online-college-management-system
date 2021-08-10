@@ -22,7 +22,13 @@
             @elseif ($student->is_admitted == 2)
             <div class="jumbotron p-3 p-md-5 text-white rounded bg-dark" style="width: 168%">
                 <div class="col-md-12 px-0">
-                  <h3 class="display-5 font-italic">Admitted/Rejected</h3>
+                  <h3 class="display-5 font-italic">Admitted</h3>
+                </div>
+            </div>
+            @else
+            <div class="jumbotron p-3 p-md-5 text-white rounded bg-dark" style="width: 168%">
+                <div class="col-md-12 px-0">
+                  <h3 class="display-5 font-italic">Rejected</h3>
                 </div>
             </div>
             @endif
