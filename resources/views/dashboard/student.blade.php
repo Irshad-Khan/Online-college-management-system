@@ -2,10 +2,34 @@
     @include('alerts.success')
         <div class="w-full max-w-2xl px-6 py-12">
 
+            @if($student->is_admitted == 1)
             <div class="md:flex md:items-center mb-6">
                 <div class="md:w-1/3">
                     <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
-                        Name : 
+                        Roll Number :
+                    </label>
+                </div>
+                <div class="md:w-2/3">
+                    <span class="text-gray-600 font-bold">{{ $student->roll_number ?: 'Not assigned yet.' }}</span>
+                </div>
+            </div>
+            @endif
+            @if($student->is_admitted == 1)
+            <div class="md:flex md:items-center mb-6">
+                <div class="md:w-1/3">
+                    <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
+                        Class :
+                    </label>
+                </div>
+                <div class="md:w-2/3 block text-gray-600 font-bold">
+                    <span class="text-gray-600 font-bold">{{ optional($student->class)->class_name ?: 'Not assigned Yet' }}</span>
+                </div>
+            </div>
+            @endif
+            <div class="md:flex md:items-center mb-6">
+                <div class="md:w-1/3">
+                    <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
+                        Name :
                     </label>
                 </div>
                 <div class="md:w-2/3">
@@ -22,18 +46,7 @@
                     <span class="text-gray-600 font-bold">{{ optional($student->user)->email }}</span>
                 </div>
             </div>
-            @if($student->is_admitted == 1)
-            <div class="md:flex md:items-center mb-6">
-                <div class="md:w-1/3">
-                    <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
-                        Roll Number :
-                    </label>
-                </div>
-                <div class="md:w-2/3">
-                    <span class="text-gray-600 font-bold">{{ $student->roll_number }}</span>
-                </div>
-            </div>
-            @endif
+
             <div class="md:flex md:items-center mb-6">
                 <div class="md:w-1/3">
                     <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
@@ -84,18 +97,7 @@
                     <span class="text-gray-600 font-bold">{{ $student->permanent_address }}</span>
                 </div>
             </div>
-            @if($student->is_admitted == 1)
-            <div class="md:flex md:items-center mb-6">
-                <div class="md:w-1/3">
-                    <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
-                        Class :
-                    </label>
-                </div>
-                <div class="md:w-2/3 block text-gray-600 font-bold">
-                    <span class="text-gray-600 font-bold">{{ optional($student->class)->class_name }}</span>
-                </div>
-            </div>
-            @endif
+
             {{-- <div class="md:flex md:items-center mb-6">
                 <div class="md:w-1/3">
                     <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
@@ -148,8 +150,8 @@
                 <div class="flex items-center justify-between border border-gray-200 -mb-px">
                     <div class="w-1/3 text-left text-gray-600 py-2 px-4 font-medium">{{ optional(optional(auth()->user()->student)->qualification)->degree_title }}</div>
                     <div class="w-1/3 text-left text-gray-600 py-2 px-4 font-medium">{{ optional(optional(auth()->user()->student)->qualification)->board }}</div>
-                    <div class="w-1/3 text-left text-gray-600 py-2 px-4 font-medium">{{ Carbon\Carbon::parse(optional(optional(auth()->user()->student)->qualification)->start_date)->format('M Y') }}</div>
-                    <div class="w-1/3 text-left text-gray-600 py-2 px-4 font-medium">{{ Carbon\Carbon::parse(optional(optional(auth()->user()->student)->qualification)->end_date)->format('M Y') }}</div>
+                    <div class="w-1/3 text-left text-gray-600 py-2 px-4 font-medium">{{ (optional(optional(auth()->user()->student)->qualification)->start_date) ? Carbon\Carbon::parse(optional(optional(auth()->user()->student)->qualification)->start_date)->format('M Y') : '' }}</div>
+                    <div class="w-1/3 text-left text-gray-600 py-2 px-4 font-medium">{{ (optional(optional(auth()->user()->student)->qualification)->end_date) ? Carbon\Carbon::parse(optional(optional(auth()->user()->student)->qualification)->end_date)->format('M Y') : '' }}</div>
                     <div class="w-1/3 text-left text-gray-600 py-2 px-4 font-medium">{{ optional(optional(auth()->user()->student)->qualification)->marks }}</div>
                     <div class="w-1/3 flex items-center justify-start px-3">
                         @if(!empty(optional(optional(auth()->user()->student)->qualification)->id))
@@ -203,6 +205,5 @@
                 @endforeach
             </div>
             @endif
-        </div>        
+        </div>
     </div>
-    

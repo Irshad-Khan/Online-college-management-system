@@ -14,7 +14,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-12">
-                
+
                                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                                     <ol class="carousel-indicators">
                                         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -31,14 +31,14 @@
                                                                 <i class="mdi mdi-format-quote-open quote-icon"></i>
                                                             </div>
                                                             <h6 class="testimonial-team-desc mb-4 text-white">
-                                                                As an emerging university in southern Punjab, The Govt. 
+                                                                As an emerging university in southern Punjab, The Govt.
                                                                 Sadiq College Women University aims to provide quality education
                                                                 to empower women through knowledge and skills so as to participate
                                                                 actively in the socio-economic development of Pakistan; as well as to
                                                                 impact the attitudes and behaviors of its graduates through various programs
                                                                 and initiatives to emerge as responsible, peaceful and tolerant citizens of the world.
                                                             </h6>
-                
+
                                                             <p class="testmonial-team-name">Vision</p>
                                                         </div>
                                                     </div>
@@ -59,7 +59,7 @@
                                                                  commitment and integrity who may ensure quality and sustainable
                                                                 development of Pakistan in general and south Punjab in particular.
                                                             </h6>
-                
+
                                                             <p class="testmonial-team-name">Mission</p>
                                                         </div>
                                                     </div>
@@ -68,7 +68,7 @@
                                         </div>
                                     </div>
                                 </div>
-                
+
                             </div>
                         </div>
                     </div>
@@ -91,7 +91,7 @@
         </div>
 
         <div class="row mt-4">
-            @foreach ($programs as $program)
+            @forelse ($programs as $program)
                 <div class="col-md-4 services-box">
                     <div class="text-center p-3">
                         <i class="mbri-help text-custom"></i>
@@ -102,7 +102,13 @@
                         {{-- <p class="text-gray pt-2">{{ Str::substr($program->description, 0, 200) }}</p> --}}
                     </div>
                 </div>
-            @endforeach
+            @empty
+            <div class="col-md-12 services-box">
+                <div class="text-center p-3">
+                    No Programs Offered Yet.
+                </div>
+            </div>
+            @endforelse
         </div>
 
     </div>
@@ -122,7 +128,7 @@
         </div>
 
         <div class="row mt-4">
-            @foreach ($admissions as $admission)
+            @forelse ($admissions as $admission)
             <div class="col-sm-4 mt-4">
                 <div class="card plan-card text-center">
                     <div class="card-body">
@@ -141,13 +147,19 @@
                         <div class="plan-features pb-3 mt-3 text-muted padding-t-b-30">
                             <p></p>
                             <p></p>
-                           
+
                             <a href="#" class="btn btn-custom">Apply Now</a>
                         </div>
                     </div>
                 </div>
             </div>
-            @endforeach
+            @empty
+            <div class="col-md-12 services-box">
+                <div class="text-center p-3">
+                    No Application Oppend Yet.
+                </div>
+            </div>
+            @endforelse
         </div>
         <!-- end row -->
 
